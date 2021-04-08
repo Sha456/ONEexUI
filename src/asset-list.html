@@ -1,0 +1,15 @@
+<template>
+    <div class="contact-list">
+        <div class="list-group">
+            <a
+                repeat.for="asset of lisOfAssets"
+                click.delegate="$parent.select(asset)"
+                route-href="route: asset; params.bind: {id:asset.assetId}"
+
+            >
+                <h3>${asset.assetName} </h3><br>
+                <small>${asset.eMailAdressOfDepartment}</small>
+            </a>
+        </div>
+    </div>
+</template>

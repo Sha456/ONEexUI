@@ -1,0 +1,79 @@
+<template>
+    <div class="card">
+      <div class="card-header text-white bg-primary">
+        Profile
+      </div>
+      <div class="card-body">
+        <form role="form">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Asset Name</label>
+            <div class="col-md-9">
+              <input type="text" placeholder="first name" class="form-control" value.bind="assertGroup.asset.assetName">
+            </div>
+          </div>
+  
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label">Department</label>
+            <div class="col-md-9">
+                <select value.bind="assertGroup.department">
+                    <option model.bind="null">Select Department</option>
+                    <option repeat.for="department of departments"
+                            model.bind="department.departmentId">
+                       ${department.departmentName}
+                    </option>
+                </select>            
+            </div>
+        </div>
+  
+        <div class ="row">
+            <div class=" mb-3 col-md-4" >
+                <label class="form-label required " for="CountryOfDepartmentLabel"  >Country Of Department</label>
+                <select  class="custom-select  form-control" placeholder="Country Of Department" id="CountryOfDepartmentId" required="required"   name="CountryCode"  value.bind="assertGroup.asset.countryOfDepartment">
+                    [ngClass]="{ 'is-invalid': createAssetForm?.get('CountryCode')?.invalid && (createAssetForm?.get('CountryCode')?.dirty || createAssetForm?.get('CountryCode')?.touched  ),
+
+                        'is-valid': createAssetForm?.get('CountryCode')?.valid && (createAssetForm?.get('CountryCode')?.dirty || createAssetForm?.get('CountryCode')?.touched  )}">
+                    <option value ="null"  model.bind="null">Select Country</option>
+                    <option repeat.for="country of countries" model.bind="country.countryCode">${country.countryName}</option>
+                </select>
+
+                <span class="text-danger" *ngIf="createAssetForm?.get('CountryCode')?.invalid && (createAssetForm?.get('CountryCode')?.dirty || createAssetForm?.get('CountryCode')?.touched)  && createAssetForm?.get('CountryCode')?.errors?.required">
+                    Can't be empty
+                </span>
+
+            </div>
+        </div>
+  
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label">Email </label>
+            <div class="col-md-9">
+              <input type="text" placeholder="Email" class="form-control" value.bind="assertGroup.asset.eMailAdressOfDepartment">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Purchase Datex </label>
+            <div class="col-md-9">
+
+              <input class="" type="date"  id="Broken" formControlName="purchaseDate"   value.bind="assertGroup.asset.purchaseDate">
+            </div>
+          </div>
+
+          <div class ="row">
+            <div class="mb-3 col-md-4 " >
+                <label for="BrokenLabel">Is this Item Broken ?   </label>
+                <!-- <input type="text" class="form-control" id="BrokenId" aria-describedby="Broken " placeholder="Laptop" formControlName="Broken"> -->
+                <input class="" type="checkbox"  id="Broken" formControlName="Broken"  checked.bind="contact.broken"  value.bind="assertGroup.asset.broken">
+
+            </div>
+        </div>
+
+        </form>
+        <div>
+          <button class="btn btn-success float-right" click.delegate="save()" disabled.bind="!canSave">Save</button>
+        </div>
+      </div>
+    </div>
+  </template>
+  
+
+  

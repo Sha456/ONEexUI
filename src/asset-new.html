@@ -1,0 +1,86 @@
+<template>
+    <h1>Register New Asset</h1>
+    <div class="container">
+        <form  novalidate="novalidate" >
+            <div class ="row">
+                <div class=" mb-3 col-md-4" >
+                    <label for="AssetNameLabel">Asset Name</label>
+                    <input type="text" class="form-control" id="AssetNameLabel" aria-describedby="Asset Name " placeholder="Laptop" value.bind="contact.assetname">
+                    <small id="AssetNameHelp" class="form-text text-muted">laptop, hard drive etc.</small>
+
+                    
+                </div>
+            </div>
+    
+            <div class ="row">
+                <div class=" mb-3 col-md-4" >
+                    <label class="form-label required " for="DepartmentLabel"  >Department</label>
+                    <select  class="custom-select  form-control" placeholder="Department" id="DepartmentId" required="required"   name="DepartmentId" value.bind="selectedDepartment" >
+                 
+                        <option value ="null"   model.bind="null">Select Department</option>
+                        <option repeat.for="department of departments" model.bind="department.departmentId">${department.departmentName}</option>
+
+                    </select>
+    
+                 
+    
+                </div>
+            </div>
+    
+            <div class ="row">
+                <div class=" mb-3 col-md-4" >
+                    <label class="form-label required " for="CountryOfDepartmentLabel"  >Country Of Department</label>
+                    <select  class="custom-select  form-control" placeholder="Country Of Department" id="CountryOfDepartmentId" required="required"   name="CountryCode"  value.bind="selectedCountryCode">
+                        <option value ="null"  model.bind="null">Select Country</option>
+                        <option repeat.for="country of countries" model.bind="country.countryCode">${country.countryName}</option>
+                    </select>
+    
+                
+    
+                </div>
+            </div>
+        
+            <div class ="row">
+                <div class=" mb-3 col-md-4" >
+                    <label for="EMailLabel">EMail</label>
+                    <input type="email" class="form-control" id="Email Label" aria-describedby="Asset Name " placeholder="Laptop"  value.bind="contact.eMailAdressOfDepartment">
+                    <small id="AssetNameHelp" class="form-text text-muted">laptop, hard drive etc.</small>
+                </div>
+            </div>
+    
+            <div class ="row">
+                <div class=" mb-3 col-md-4" >
+                    <label for="PurchaseDateLabel">Purchase Date</label>
+                    <input class="form-control" type="date" value= "{{purchaiseDate}}" id="datetime-local-input" value.bind="contact.purchaseDate">
+    
+                    <small id="AssetNameHelp" class="form-text text-muted">laptop, hard drive etc.</small>
+                </div>
+            </div>
+    
+            <div class ="row">
+                <div class="mb-3 col-md-4 " >
+                    <label for="BrokenLabel">Is this Item Broken ?   </label>
+                    <!-- <input type="text" class="form-control" id="BrokenId" aria-describedby="Broken " placeholder="Laptop" formControlName="Broken"> -->
+                    <input class="" type="checkbox"  id="Broken" formControlName="Broken"  checked.bind="contact.broken">
+
+                </div>
+            </div>
+    
+            <div class ="row">
+                <div class=" mb-3 col-md-4" >
+                    <button type="button" class="btn btn-primary" (click)="SaveAsset($event)">Save</button>
+                    <button class="btn btn-success float-right" click.delegate="save()" >Save</button> 
+                    <!-- disabled.bind="!canSave" -->
+
+                    <button type="button" class="btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+    
+    
+  </template>
+  
+
+  
